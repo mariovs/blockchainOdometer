@@ -1,6 +1,7 @@
 package com.mario22gmail.vasile.odometerblockchain;
 
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,23 +40,23 @@ public class ListAssetsActivity extends AppCompatActivity {
         {
             assetIdList.add(asset.getFirstTransactionId());
         }
-        String[] simpleArray = new String[ assetIdList.size() ];
 
         arrayAdapter = new ArrayAdapter<String>(
-                this,R.layout.asset_view, R.id.assetIdTextView, assetIdList);
+                this,R.layout.asset_view, R.id.assetKeyTextView, assetIdList);
 
         assetListView.setAdapter(arrayAdapter);
         assetListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                    int itemPosition = position;
-                    String transactionIdString = (String) assetListView.getItemAtPosition(itemPosition);
+                    String transactionIdString = (String) assetListView.getItemAtPosition(position);
                     Log.d(Constants.LogKey, "click on " + transactionIdString);
 
                     AssetKeys asset= dbService.appDatabase.assetDao().GetAssetKey(transactionIdString);
                     Log.d(Constants.LogKey, "ceva  " + asset.getPrivateKey());
                     Intent intent = new Intent(getApplicationContext(), AssetDetailsActivity.class);
                     intent.putExtra(Constants.assetIdConstant, transactionIdString);
+                    intent.putExtra(Constants.publicKeyConstant, asset.getPublicKey());
+                    intent.putExtra(Constants.privateKeyConstant, asset.getPrivateKey());
                     startActivity(intent);
             }
         });

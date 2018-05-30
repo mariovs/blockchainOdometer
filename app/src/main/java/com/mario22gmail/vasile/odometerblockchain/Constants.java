@@ -18,6 +18,8 @@ public final class Constants {
 
     //used to pass asset id to another activity
     public static String assetIdConstant = "assetIdKeyToSent";
+    public static String publicKeyConstant = "publicKeyConstant";
+    public static String privateKeyConstant = "privateKeyConstant";
 
     public enum AssetStatus{
         Active,

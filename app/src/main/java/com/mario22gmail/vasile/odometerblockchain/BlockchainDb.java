@@ -1,6 +1,9 @@
 package com.mario22gmail.vasile.odometerblockchain;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -43,6 +46,10 @@ public interface BlockchainDb {
 
     @GET("key/generate")
     Call<JsonObject> generateKeyPair();
+
+    @Multipart
+    @POST("asset/getByPublicKey")
+    Call<JsonArray> getAssetListByPublicKey(@Part("publicKey") String publicKey);
 
 
 

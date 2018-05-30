@@ -11,7 +11,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.gson.JsonObject;
-import com.mario22gmail.vasile.odometerblockchain.DataModel.AssetKeys;
 import com.mario22gmail.vasile.odometerblockchain.DataModel.DatabaseService;
 import com.mario22gmail.vasile.odometerblockchain.DataModel.KeyPair;
 
@@ -32,10 +31,12 @@ public class UserKeyPairsListActivity extends AppCompatActivity {
 
     ArrayAdapter<String> arrayAdapter;
     DatabaseService dbService;
+    List<String> publicKeyList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Your public keys");
         setContentView(R.layout.activity_user_key_pairs_list);
         ButterKnife.bind(this);
         dbService= DatabaseService.GetInstance(getApplicationContext());
@@ -58,8 +59,10 @@ public class UserKeyPairsListActivity extends AppCompatActivity {
 
                     dbService.appDatabase.keyPairDao().insert(keyPair);
                     //referesh listView
+                    publicKeyList.add(keyPair.getPublicKey());
+                    arrayAdapter.notifyDataSetChanged();
 
-                    AddItemToAdapter(keyPair.getPublicKey());
+
 
                 }else {
                     Toast.makeText(getApplicationContext(), "An error occurred " + response.message(), Toast.LENGTH_LONG).show();
@@ -75,34 +78,34 @@ public class UserKeyPairsListActivity extends AppCompatActivity {
 
     public void AddItemToAdapter(String item)
     {
-        arrayAdapter.add(item);
+
     }
 
     public void LoadListView(){
         List<KeyPair> keyPairList = dbService.appDatabase.keyPairDao().getAll();
-        List<String> publicKeyList = new ArrayList<>();
+
         for(KeyPair keyPair : keyPairList)
         {
             publicKeyList.add(keyPair.getPublicKey());
         }
         String[] simpleArray = new String[ publicKeyList.size() ];
         arrayAdapter = new ArrayAdapter<>(
-                this,R.layout.asset_view, R.id.assetIdTextView, publicKeyList.toArray(simpleArray));
+                this,R.layout.public_keys_view, R.id.publicKeyTextView, publicKeyList.toArray(simpleArray));
 
         keyPairsListView.setAdapter(arrayAdapter);
         keyPairsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                int itemPosition = position;
-                String publicKey = (String) keyPairsListView.getItemAtPosition(itemPosition);
-                Log.d(Constants.LogKey, "click on " + publicKey);
+                String publicKey = (String) keyPairsListView.getItemAtPosition(position);
+                    Log.d(Constants.LogKey, "click on " + publicKey);
 
-                KeyPair keyPair = dbService.appDatabase.keyPairDao().GetKeyPair(publicKey);
-                Log.d(Constants.LogKey, "ceva  " + keyPair.getPrivateKey());
+                    KeyPair keyPair = dbService.appDatabase.keyPairDao().GetKeyPair(publicKey);
+                    Log.d(Constants.LogKey, "ceva  " + keyPair.getPrivateKey());
 
-//                Intent intent = new Intent(getApplicationContext(), AssetDetailsActivity.class);
-//                intent.putExtra(Constants.assetIdConstant, transactionIdString);
-//                startActivity(intent);
+                    Intent intent = new Intent(getApplicationContext(), UsersAssetsList.class);
+                    intent.putExtra(Constants.publicKeyConstant, keyPair.getPublicKey());
+                    intent.putExtra(Constants.privateKeyConstant, keyPair.getPrivateKey());
+                    startActivity(intent);
             }
         });
     }
