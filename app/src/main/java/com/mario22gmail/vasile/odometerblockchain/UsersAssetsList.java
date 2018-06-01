@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -34,6 +35,9 @@ public class UsersAssetsList extends AppCompatActivity {
     @BindView(R.id.userAssetsListView)
     ListView assetsListView;
 
+    @BindView(R.id.publicKeyDetailsTextView)
+    TextView publicKeyTextView;
+
     @BindView(R.id.emptyState)
     ConstraintLayout emptyView;
 
@@ -48,6 +52,7 @@ public class UsersAssetsList extends AppCompatActivity {
         ButterKnife.bind(this);
         publicKey = getIntent().getStringExtra(Constants.publicKeyConstant);
         privateKey = getIntent().getStringExtra(Constants.privateKeyConstant);
+        publicKeyTextView.setText(publicKey);
         LoadListView();
     }
 

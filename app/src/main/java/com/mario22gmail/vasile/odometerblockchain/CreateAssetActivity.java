@@ -55,15 +55,16 @@ public class CreateAssetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_asset);
         ButterKnife.bind(this);
-
-        manufacturerEditText.setText("manufacturer1");
-        modelEditText.setText("model1");
-        serialNumberEditText.setText("ceva serial");
-        productionYearEditText.setText("2018");
-        sellerNameEditText.setText("mario Emag");
-        dateOfSaleEditText.setText("2019");
-        meterUnitEditText.setText("km");
-        signatureEditText.setText("signature");
+        setTitle("Create asset");
+//
+//        manufacturerEditText.setText("manufacturer1");
+//        modelEditText.setText("model1");
+//        serialNumberEditText.setText("ceva serial");
+//        productionYearEditText.setText("2018");
+//        sellerNameEditText.setText("mario Emag");
+//        dateOfSaleEditText.setText("2019");
+//        meterUnitEditText.setText("km");
+//        signatureEditText.setText("signature");
     }
 
 

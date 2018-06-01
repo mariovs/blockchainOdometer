@@ -33,6 +33,8 @@ public class ListAssetsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_assets);
         ButterKnife.bind(this );
 
+        setTitle("Assets List");
+
         final DatabaseService dbService = DatabaseService.GetInstance(getApplicationContext());
         List<AssetKeys> assetStoredHere = dbService.appDatabase.assetDao().getAll();
         assetIdList = new ArrayList<>();

@@ -4,58 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context="com.mario22gmail.vasile.odometerblockchain.MainActivity">
 
-    <EditText
-        android:id="@+id/helloWroldText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
+    <ImageButton
         android:id="@+id/PressMeButton"
-        android:layout_width="130dp"
-        android:layout_height="47dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="82dp"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/circle_button"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        android:text="List all assets"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_store" />
+
+    <ImageButton
+        android:id="@+id/buttonWriteDb"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="82dp"
+        android:layout_marginRight="82dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/circle_button"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_perm_identity" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="List all assets"
-        android:minWidth="170dp"
-        android:padding="8dp"
-        android:background="@color/colorPrimary"
+        android:text="Seller"
         android:textColor="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/helloWroldText" />
-
-    <Button
-        android:id="@+id/buttonWriteDb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="User Key List"
-        android:minWidth="170dp"
-        android:padding="8dp"
-        android:background="@color/colorPrimary"
-        android:textColor="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/PressMeButton"
+        app:layout_constraintStart_toStartOf="@+id/PressMeButton"
         app:layout_constraintTop_toBottomOf="@+id/PressMeButton" />
 
-    <Button
-        android:id="@+id/createAssetButton"
+    <TextView
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -63,61 +67,45 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Create Asset"
-        android:minWidth="170dp"
-        android:padding="8dp"
-        android:background="@color/colorPrimary"
+        android:text="Owner"
         android:textColor="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/buttonWriteDb"
+        app:layout_constraintStart_toStartOf="@+id/buttonWriteDb"
         app:layout_constraintTop_toBottomOf="@+id/buttonWriteDb" />
 
-    <Button
-        android:id="@+id/scanButton"
+    <TextView
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Scan Button"
-        android:minWidth="170dp"
-        android:padding="8dp"
-        android:background="@color/colorPrimary"
-        android:textColor="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createAssetButton" />
-
-    <Button
-        android:id="@+id/createQRButton"
-        android:layout_width="184dp"
-        android:layout_height="45dp"
+        android:layout_marginBottom="48dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="CreateQRCode"
-        android:minWidth="170dp"
-        android:padding="8dp"
-        android:background="@color/colorPrimary"
+        android:text="Choose your role"
         android:textColor="@color/colorWhite"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonWriteDb"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scanButton" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/QRCodeImageView"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="DeMetrA"
+        android:textColor="@color/colorWhite"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createQRButton"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,11 +1,13 @@
 package com.mario22gmail.vasile.odometerblockchain;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -32,22 +34,27 @@ public class MainActivity extends AppCompatActivity {
     String logKey = "MMM:";
     AppDatabase dbInstance;
 
-    @BindView(R.id.helloWroldText) EditText helloWorldEditText;
-    @BindView(R.id.QRCodeImageView)
-    ImageView QRCodeImageView;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+
+        //Remove title bar//Remove
+
         DatabaseService databaseService = DatabaseService.GetInstance(getApplicationContext());
         dbInstance = databaseService.appDatabase;
-        if(dbInstance.assetDao().getAll().size() > 0)
-        {
-            helloWorldEditText.setText(dbInstance.assetDao().getAll().get(0).getPublicKey());
-        }
+//        if(dbInstance.assetDao().getAll().size() > 0)
+//        {
+//            helloWorldEditText.setText(dbInstance.assetDao().getAll().get(0).getPublicKey());
+//        }
 
     }
 
@@ -82,14 +89,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(userKeyPariIntent);
     }
 
-    @OnClick(R.id.createAssetButton)
+//    @OnClick(R.id.createAssetButton)
     public void AddNewAssetClick(View view)
     {
         Intent createNewAssetActivity = new Intent(getApplicationContext(),CreateAssetActivity.class);
         startActivity(createNewAssetActivity);
     }
 
-    @OnClick(R.id.scanButton)
+//    @OnClick(R.id.scanButton)
     public void ScanButtonClick(View view)
     {
         IntentIntegrator intent = new IntentIntegrator(this);
@@ -110,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             {
                 Toast.makeText(this, "You canceld" , Toast.LENGTH_LONG);
             }else{
-                helloWorldEditText.setText(intentResult.getContents());
+//                helloWorldEditText.setText(intentResult.getContents());
                 Toast.makeText(this, intentResult.getContents(), Toast.LENGTH_LONG);
             }
         }else
@@ -119,12 +126,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @OnClick(R.id.createQRButton)
-    public void CreateQRCode(View view)
-    {
-        String textFromTextView = helloWorldEditText.getText().toString();
-
-        Bitmap qrCodeGenerated = QRCode.from(textFromTextView).bitmap();
-        QRCodeImageView.setImageBitmap(qrCodeGenerated);
-    }
+//    @OnClick(R.id.createQRButton)
+//    public void CreateQRCode(View view)
+//    {
+//        String textFromTextView = helloWorldEditText.getText().toString();
+//
+//        Bitmap qrCodeGenerated = QRCode.from(textFromTextView).bitmap();
+//        QRCodeImageView.setImageBitmap(qrCodeGenerated);
+//    }
 }

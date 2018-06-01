@@ -33,9 +33,6 @@ public class AssetDetailsActivity extends AppCompatActivity {
     @BindView(R.id.privateKeyValueTextView)
     TextView privateKeyTextView;
 
-    @BindView(R.id.assetStatusTextView)
-    TextView assetStatusTextView;
-
     @BindView(R.id.transferAssetButton)
     Button transferAssetButton;
 
@@ -51,6 +48,7 @@ public class AssetDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_asset_details);
         ButterKnife.bind(this);
 
+        setTitle("Asset details");
 //        DatabaseService dbService = DatabaseService.GetInstance(getApplicationContext());
         assetTransactionId = getIntent().getStringExtra(Constants.assetIdConstant);
         publicKey = getIntent().getStringExtra(Constants.publicKeyConstant);
